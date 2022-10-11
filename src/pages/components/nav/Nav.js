@@ -58,9 +58,9 @@ const NavContainer = styled.div`
 
     .nav-list-container {
       height: 82%;
-
       background-color: ${({ theme }) => theme.bgColor};
       color: #fff;
+
       .nav-list {
         height: 50px;
         padding: 5%;
@@ -80,11 +80,11 @@ const NavContainer = styled.div`
 
     .nav-footer {
       height: 10%;
-
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: ${({ theme }) => theme.lightGreen};
+
       .record {
         width: 60px;
         height: 60px;
