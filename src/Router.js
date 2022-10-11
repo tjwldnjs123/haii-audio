@@ -9,7 +9,7 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Nav />} />
-        <Route path="/record" element={<Record />} />{" "}
+        <Route path="/record" element={<Record />} />
         <Route path="/play" element={<Play />} />
       </Routes>
     </BrowserRouter>
