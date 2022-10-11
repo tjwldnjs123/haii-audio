@@ -8,22 +8,15 @@ const Nav = () => {
     <NavContainer>
       <div className="nav-bar-container">
         <p className="nav-header">모든 녹음 항목</p>
-        <div className="nav-list-container">
-          <div className="nav-list">
+        <ul className="nav-list-container">
+          <li className="nav-list">
             <div className="address">역삼동 736-38</div>
             <div className="time-container">
               <p>오후 8:00</p>
               <p>00:04</p>
             </div>
-          </div>
-          <div className="nav-list">
-            <div className="address">역삼동 736-38</div>
-            <div className="time-container">
-              <p>오후 8:00</p>
-              <p>00:04</p>
-            </div>
-          </div>
-        </div>
+          </li>
+        </ul>
         <div className="nav-footer">
           <FontAwesomeIcon className="record" icon={faRecordVinyl} />
         </div>
