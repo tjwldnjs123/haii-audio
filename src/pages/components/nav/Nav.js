@@ -38,6 +38,8 @@ export default Nav;
 const NavContainer = styled.div`
   width: ${({ theme }) => theme.tablet};
   height: 100vh;
+  margin: 0 auto;
+  border: 1px solid black;
 
   .nav-bar-container {
     width: 30%;
@@ -87,6 +89,7 @@ const NavContainer = styled.div`
         width: 60px;
         height: 60px;
         color: #fff;
+        cursor: pointer;
       }
     }
   }
