@@ -49,7 +49,7 @@ const NavContainer = styled.div`
       align-items: center;
       height: 8%;
       font-weight: 700;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid ${({ theme }) => theme.regularGreen};
       color: #fff;
       background-color: ${({ theme }) => theme.bgColor};
     }
@@ -62,7 +62,7 @@ const NavContainer = styled.div`
       .nav-list {
         height: 50px;
         padding: 5%;
-        border-bottom: 1px solid blue;
+        border-bottom: 1px solid ${({ theme }) => theme.regularGreen};
 
         .address {
           font-weight: 700;
@@ -82,11 +82,11 @@ const NavContainer = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: ${({ theme }) => theme.lightBlue};
+      background-color: ${({ theme }) => theme.lightGreen};
       .record {
         width: 60px;
         height: 60px;
-        color: red;
+        color: #fff;
       }
     }
   }

@@ -1,5 +1,5 @@
 export const white = "#FFFFFF";
 export const tablet = "820px";
-export const bgColor = "#374499";
-export const regularBlue = "#4959a9";
-export const lightBlue = "#6782b6";
+export const bgColor = "#495b53";
+export const lightGreen = "#8ea49a";
+export const regularGreen = "#d2dbd7";
