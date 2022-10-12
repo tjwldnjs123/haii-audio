@@ -11,18 +11,23 @@ const Nav = ({ file }) => {
       <div className="nav-bar-container">
         <p className="nav-header">모든 녹음 항목</p>
         <ul className="nav-list-container">
-          <li
-            className="nav-list"
-            onClick={() => {
-              navigate("/play");
-            }}
-          >
-            <div className="address">{file.name}</div>
-            <div className="time-container">
-              <p>오후 8:00</p>
-              <p>00:04</p>
-            </div>
-          </li>
+          {file?.map((fileList) => {
+            return (
+              <li
+                key={fileList.size}
+                className="nav-list"
+                onClick={() => {
+                  navigate("/play");
+                }}
+              >
+                <div className="address">{fileList.name}</div>
+                <div className="time-container">
+                  <p>{fileList.lastModified}</p>
+                  <p>00:04</p>
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <div className="nav-footer">
           <VscRecord

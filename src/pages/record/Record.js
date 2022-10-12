@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Record = ({ setUrl, setFile }) => {
+const Record = ({ setFile }) => {
   const [stream, setStream] = useState();
   const [media, setMedia] = useState();
   const [onRec, setOnRec] = useState(true);
@@ -66,14 +66,14 @@ const Record = ({ setUrl, setFile }) => {
 
   const onSubmitAudioFile = useCallback(() => {
     if (audioUrl) {
-      setUrl(URL.createObjectURL(audioUrl)); // 출력된 링크에서 녹음된 오디오 확인 가능
+      sessionStorage.setItem("url", URL.createObjectURL(audioUrl)); // 출력된 링크에서 녹음된 오디오 확인 가능
     }
     // File 생성자를 사용해 파일로 변환
     const sound = new File([audioUrl], "haii-audio", {
       lastModified: new Date().getTime(),
       type: "audio",
     });
-    setFile(sound); // File 정보 출력
+    setFile((prev) => [...prev, sound]); // File 정보 출력
     navigate("/");
   }, [audioUrl]);
   return (
