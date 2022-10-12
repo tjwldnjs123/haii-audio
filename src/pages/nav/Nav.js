@@ -1,27 +1,26 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { VscRecord } from 'react-icons/vsc';
 
 const Nav = () => {
   return (
     <NavContainer>
-      <div className="nav-bar-container">
-        <p className="nav-header">모든 녹음 항목</p>
-        <ul className="nav-list-container">
-          <li className="nav-list">
-            <div className="address">역삼동 736-38</div>
-            <div className="time-container">
+      <div className='nav-bar-container'>
+        <p className='nav-header'>모든 녹음 항목</p>
+        <ul className='nav-list-container'>
+          <li className='nav-list'>
+            <div className='address'>역삼동 736-38</div>
+            <div className='time-container'>
               <p>오후 8:00</p>
               <p>00:04</p>
             </div>
           </li>
         </ul>
-        <div className="nav-footer">
-          <FontAwesomeIcon className="record" icon={faRecordVinyl} />
+        <div className='nav-footer'>
+          <VscRecord className='record' />
         </div>
       </div>
-      <div className="main">
+      <div className='main'>
         <p>음성 메모를 시작하려면 녹음 버튼을 클릭하십시오.</p>
       </div>
     </NavContainer>
@@ -59,7 +58,6 @@ const NavContainer = styled.div`
       color: #fff;
 
       .nav-list {
-        height: 50px;
         padding: 5%;
         border-bottom: 1px solid ${({ theme }) => theme.regularGreen};
 
