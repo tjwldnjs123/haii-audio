@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { VscRecord } from 'react-icons/vsc';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { VscRecord } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ file }) => {
+  const navigate = useNavigate();
+  console.log(file);
   return (
     <NavContainer>
-      <div className='nav-bar-container'>
-        <p className='nav-header'>모든 녹음 항목</p>
-        <ul className='nav-list-container'>
-          <li className='nav-list'>
-            <div className='address'>역삼동 736-38</div>
-            <div className='time-container'>
+      <div className="nav-bar-container">
+        <p className="nav-header">모든 녹음 항목</p>
+        <ul className="nav-list-container">
+          <li className="nav-list">
+            <div className="address">{file.name}</div>
+            <div className="time-container">
               <p>오후 8:00</p>
               <p>00:04</p>
             </div>
           </li>
         </ul>
-        <div className='nav-footer'>
-          <VscRecord className='record' />
+        <div className="nav-footer">
+          <VscRecord
+            onClick={() => {
+              navigate("/record");
+            }}
+            className="record"
+          />
         </div>
       </div>
-      <div className='main'>
+      <div className="main">
         <p>음성 메모를 시작하려면 녹음 버튼을 클릭하십시오.</p>
       </div>
     </NavContainer>
