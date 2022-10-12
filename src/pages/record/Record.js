@@ -8,11 +8,11 @@ const Record = () => {
       <section className='wave-form'>파형</section>
       <section className='side-wave-form'>side 파형</section>
       <section className='record-time'>00:00.00</section>
-      <section className='record-btn-box'>
+      <footer className='record-btn-box'>
         <div className='record-left-btn'>시작</div>
         <div className='record-center-btn'>시작</div>
         <div className='record-right-btn'>완료</div>
-      </section>
+      </footer>
     </StyledRecord>
   );
 };
