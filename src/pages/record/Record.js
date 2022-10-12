@@ -6,11 +6,10 @@ const Record = () => {
     <StyledRecord>
       <header>파일 제목</header>
       <section className='wave-form'>파형</section>
-      <section className='side-wave-form'>side 파형</section>
       <section className='record-time'>00:00.00</section>
       <footer className='record-btn-box'>
         <div className='record-left-btn'>시작</div>
-        <div className='record-center-btn'>시작</div>
+        <div className='record-center-btn'>재생버튼</div>
         <div className='record-right-btn'>완료</div>
       </footer>
     </StyledRecord>
@@ -20,15 +19,16 @@ const Record = () => {
 const StyledRecord = styled.section`
   width: ${({ theme }) => theme.tablet};
   height: 100vh;
-  background-color: #2c2c2d;
+  background-color: ${({ theme }) => theme.bgColor};
 
   header {
     padding: 10px 0;
     display: flex;
     justify-content: center;
-    background-color: #363439;
-    border-bottom: 2px solid black;
-    color: #a5a3a8;
+    background-color: #647d72;
+    border-bottom: 1.5px solid #2d3934;
+    color: #fff;
+    font-weight: 600;
   }
 
   .wave-form {
@@ -61,6 +61,13 @@ const StyledRecord = styled.section`
     display: flex;
     justify-content: space-around;
     color: white;
+
+    .record-left-btn {
+      padding: 15px 30px;
+      border: 1px solid white;
+      border-radius: 30px;
+      font-size: smaller;
+    }
   }
 `;
 
