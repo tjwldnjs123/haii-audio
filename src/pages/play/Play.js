@@ -2,14 +2,14 @@ import React, { useCallback, useRef } from "react";
 import { WaveSurfer, WaveForm } from "wavesurfer-react";
 import styled from "styled-components";
 
-const Play = ({ url }) => {
+const Play = () => {
   const wavesurferRef = useRef();
 
   const handleWave = useCallback((waveSurfer) => {
     wavesurferRef.current = waveSurfer;
 
     if (wavesurferRef.current) {
-      wavesurferRef.current.load(url);
+      wavesurferRef.current.load(sessionStorage.getItem("url"));
     }
   }, []);
 
@@ -37,7 +37,7 @@ const Play = ({ url }) => {
       <audio
         onPlay={play}
         onPause={pause}
-        src={url}
+        src={sessionStorage.getItem("url")}
         controls
         controlsList="noplaybackrate"
       ></audio>
