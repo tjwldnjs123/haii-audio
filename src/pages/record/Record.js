@@ -1,6 +1,8 @@
-import React, { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { BsFillSquareFill } from 'react-icons/bs';
+import { VscRecord } from 'react-icons/vsc';
 
 const Record = ({ setUrl, setFile }) => {
   const [stream, setStream] = useState();
@@ -69,27 +71,27 @@ const Record = ({ setUrl, setFile }) => {
       setUrl(URL.createObjectURL(audioUrl)); // 출력된 링크에서 녹음된 오디오 확인 가능
     }
     // File 생성자를 사용해 파일로 변환
-    const sound = new File([audioUrl], "haii-audio", {
+    const sound = new File([audioUrl], 'haii-audio', {
       lastModified: new Date().getTime(),
-      type: "audio",
+      type: 'audio',
     });
     setFile(sound); // File 정보 출력
-    navigate("/");
+    navigate('/');
   }, [audioUrl]);
   return (
     <StyledRecord>
       <header>파일 제목</header>
-      <section className="wave-form">파형</section>
-      <section className="record-time">00:00.00</section>
-      <footer className="record-btn-box">
-        <div
-          className="record-left-btn"
-          onClick={onRec ? onRecAudio : offRecAudio}
-        >
-          시작
+      <section className='wave-form'>파형</section>
+      <section className='record-time'>00:00.00</section>
+      <footer className='record-btn-box'>
+        <div className='record-btn' onClick={onRec ? onRecAudio : offRecAudio}>
+          {onRec ? (
+            <VscRecord />
+          ) : (
+            <BsFillSquareFill style={{ color: '#fff' }} />
+          )}
         </div>
-        <div className="record-center-btn">재생버튼</div>
-        <div className="record-right-btn" onClick={onSubmitAudioFile}>
+        <div className='complete-btn' onClick={onSubmitAudioFile}>
           완료
         </div>
       </footer>
@@ -144,11 +146,26 @@ const StyledRecord = styled.section`
     justify-content: space-around;
     color: white;
 
-    .record-left-btn {
-      padding: 15px 30px;
-      border: 1px solid white;
+    .record-btn {
+      font-size: xx-large;
+      color: #f40d01;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .complete-btn {
+      padding: 10px 30px;
+      border: 1.5px solid #fff;
       border-radius: 30px;
-      font-size: smaller;
+      font-weight: 600;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #fff;
+        color: ${({ theme }) => theme.bgColor};
+      }
     }
   }
 `;
