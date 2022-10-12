@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import { WaveSurfer, WaveForm } from "wavesurfer-react";
+import styled from "styled-components";
 
 const Play = ({ url }) => {
   const wavesurferRef = useRef();
@@ -21,7 +22,7 @@ const Play = ({ url }) => {
   }, []);
 
   return (
-    <>
+    <WaveContainer>
       <WaveSurfer onMount={handleWave}>
         <WaveForm
           id="waveform"
@@ -41,8 +42,21 @@ const Play = ({ url }) => {
         controlsList="noplaybackrate"
       ></audio>
       ;
-    </>
+    </WaveContainer>
   );
 };
+
+const WaveContainer = styled.div`
+  background-color: black;
+  text-align: center;
+
+  audio::-webkit-media-controls-timeline {
+    display: none;
+  }
+
+  audio::-webkit-media-controls-volume-slider {
+    margin-left: 500px;
+  }
+`;
 
 export default Play;
