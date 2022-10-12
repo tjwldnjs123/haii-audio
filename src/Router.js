@@ -7,6 +7,7 @@ import Record from "./pages/record/Record";
 function Router() {
   const [url, setUrl] = useState("");
   const [file, setFile] = useState([]);
+  console.log(url);
   return (
     <BrowserRouter>
       <Routes>
