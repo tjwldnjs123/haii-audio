@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "./pages/components/nav/Nav";
+import Nav from "./pages/nav/Nav";
 import Play from "./pages/play/Play";
 import Record from "./pages/record/Record";
 

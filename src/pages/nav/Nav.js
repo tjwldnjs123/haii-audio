@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
@@ -8,26 +8,21 @@ const Nav = () => {
     <NavContainer>
       <div className="nav-bar-container">
         <p className="nav-header">모든 녹음 항목</p>
-        <div className="nav-list-container">
-          <div className="nav-list">
+        <ul className="nav-list-container">
+          <li className="nav-list">
             <div className="address">역삼동 736-38</div>
             <div className="time-container">
               <p>오후 8:00</p>
               <p>00:04</p>
             </div>
-          </div>
-          <div className="nav-list">
-            <div className="address">역삼동 736-38</div>
-            <div className="time-container">
-              <p>오후 8:00</p>
-              <p>00:04</p>
-            </div>
-          </div>
-        </div>
-
+          </li>
+        </ul>
         <div className="nav-footer">
           <FontAwesomeIcon className="record" icon={faRecordVinyl} />
         </div>
+      </div>
+      <div className="main">
+        <p>음성 메모를 시작하려면 녹음 버튼을 클릭하십시오.</p>
       </div>
     </NavContainer>
   );
@@ -36,6 +31,7 @@ const Nav = () => {
 export default Nav;
 
 const NavContainer = styled.div`
+  display: flex;
   width: ${({ theme }) => theme.tablet};
   height: 100vh;
   margin: 0 auto;
@@ -44,6 +40,7 @@ const NavContainer = styled.div`
   .nav-bar-container {
     width: 30%;
     height: 100%;
+    border-right: 1px solid ${({ theme }) => theme.lightGreen};
 
     .nav-header {
       display: flex;
@@ -74,6 +71,7 @@ const NavContainer = styled.div`
         .time-container {
           display: flex;
           justify-content: space-between;
+          color: #b2b2b2;
         }
       }
     }
@@ -91,6 +89,19 @@ const NavContainer = styled.div`
         color: #fff;
         cursor: pointer;
       }
+    }
+  }
+
+  .main {
+    width: 70%;
+    background-color: ${({ theme }) => theme.bgColor};
+
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #b2b2b2;
     }
   }
 `;
