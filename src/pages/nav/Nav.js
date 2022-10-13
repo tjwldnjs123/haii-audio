@@ -53,8 +53,10 @@ const NavContainer = styled.div`
   );
   border-radius: 3%;
   box-shadow: 5px 5px 5px 5px #d1d1d1;
+
   .nav-bar-container {
     width: 100%;
+
     .nav-header {
       display: flex;
       justify-content: center;

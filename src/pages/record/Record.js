@@ -61,6 +61,7 @@ const Record = ({ setFile }) => {
           setOnRec(false);
         }
         setTimer(e.playbackTime.toFixed(2));
+        setTimer(e.playbackTime.toFixed(2));
       };
     });
   };
@@ -133,6 +134,11 @@ const StyledCircle = styled(BsFillRecordFill)`
 `;
 
 const StyledRecord = styled.section`
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   width: ${({ theme }) => theme.tablet};
   height: 80vh;
   margin: 7% auto 0 auto;
