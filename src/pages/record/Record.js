@@ -55,6 +55,7 @@ const Record = () => {
           setOnRec(false);
         }
         setTimer(e.playbackTime.toFixed(2));
+        setTimer(e.playbackTime.toFixed(2));
       };
     });
   };
@@ -123,14 +124,14 @@ const StyledSquare = styled(IoIosSquare)`
   padding: 5px;
   border: 1px solid #fff;
   border-radius: 50%;
-  font-size: xx-large;
+  font-size: 50px;
 `;
 
 const StyledCircle = styled(BsFillRecordFill)`
   padding: 5px;
   border: 1px solid #fff;
   border-radius: 50%;
-  font-size: xx-large;
+  font-size: 50px;
 `;
 
 const StyledRecord = styled.section`
@@ -223,6 +224,7 @@ const StyledRecord = styled.section`
       border: 1px solid #fff;
       border-radius: 30px;
       font-weight: 600;
+      font-size: larger;
       color: #fff;
 
       &:hover {
