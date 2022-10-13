@@ -203,7 +203,7 @@ const StyledRecord = styled.section`
     }
 
     .complete-btn {
-      padding: 10px 30px;
+      padding: 5px 30px;
       border: 1.5px solid #fff;
       border-radius: 30px;
       font-weight: 600;
@@ -211,8 +211,16 @@ const StyledRecord = styled.section`
 
       &:hover {
         cursor: pointer;
-        background-color: #fff;
-        color: ${({ theme }) => theme.bgColor};
+        background-color: silver;
+        color: linear-gradient(
+          to top,
+          lightgrey 0%,
+          lightgrey 1%,
+          #e0e0e0 26%,
+          #efefef 48%,
+          #d9d9d9 75%,
+          #bcbcbc 100%
+        );
       }
     }
   }

@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { WaveSurfer, WaveForm } from 'wavesurfer-react';
 import styled from 'styled-components';
+import { ImArrowLeft2 } from 'react-icons/im';
 
 const Play = () => {
   const wavesurferRef = useRef();
+  const navigate = useNavigate();
 
   const handleWave = (waveSurfer) => {
     wavesurferRef.current = waveSurfer;
@@ -17,6 +20,7 @@ const Play = () => {
   return (
     <WaveContainer>
       <div className='title-container'>
+        <StyleArrow onClick={() => navigate('/')} />
         <h1>재생화면</h1>
       </div>
       <WaveSurfer onMount={handleWave}>
@@ -44,6 +48,18 @@ const Play = () => {
   );
 };
 
+const StyleArrow = styled(ImArrowLeft2)`
+  position: absolute;
+  top: 35px;
+  left: 20px;
+  color: white;
+  font-size: xx-large;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const WaveContainer = styled.div`
   width: ${({ theme }) => theme.tablet};
   height: 80vh;
@@ -63,9 +79,12 @@ const WaveContainer = styled.div`
 
   .title-container {
     padding: 5% 0;
+    display: flex;
+    position: relative;
     border-bottom: 1px solid white;
 
     h1 {
+      margin: 0 auto;
       font-size: xx-large;
       color: white;
     }
