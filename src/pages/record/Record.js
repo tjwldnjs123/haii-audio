@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import waveSound from "../../assets/wave-sound.png";
+import styled from "styled-components";
 import { BsFillRecordFill } from "react-icons/bs";
 import { IoIosSquare } from "react-icons/io";
 
