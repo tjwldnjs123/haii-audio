@@ -1,27 +1,32 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { VscRecord } from "react-icons/vsc";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { VscRecord } from 'react-icons/vsc';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = ({ file }) => {
   const navigate = useNavigate();
   console.log(file);
   return (
     <NavContainer>
-      <div className="nav-bar-container">
-        <p className="nav-header">모든 녹음 항목</p>
-        <ul className="nav-list-container">
+      <div className='nav-bar-container'>
+        <p className='nav-header'>모든 녹음 항목</p>
+        <ul className='nav-list-container'>
+          {
+            <div className='main'>
+              <p>음성 메모를 시작하려면 녹음 버튼을 클릭하십시오.</p>
+            </div>
+          }
           {file?.map((fileList) => {
             return (
               <li
                 key={fileList.size}
-                className="nav-list"
+                className='nav-list'
                 onClick={() => {
-                  navigate("/play");
+                  navigate('/play');
                 }}
               >
-                <div className="address">{fileList.name}</div>
-                <div className="time-container">
+                <div className='address'>{fileList.name}</div>
+                <div className='time-container'>
                   <p>{fileList.lastModified}</p>
                   <p>00:04</p>
                 </div>
@@ -29,16 +34,16 @@ const Nav = ({ file }) => {
             );
           })}
         </ul>
-        <div className="nav-footer">
+        <div className='nav-footer'>
           <VscRecord
             onClick={() => {
-              navigate("/record");
+              navigate('/record');
             }}
-            className="record"
+            className='record'
           />
         </div>
       </div>
-      <div className="main">
+      <div className='main'>
         <p>음성 메모를 시작하려면 녹음 버튼을 클릭하십시오.</p>
       </div>
     </NavContainer>

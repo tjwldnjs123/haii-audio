@@ -95,8 +95,8 @@ const Record = ({ setFile }) => {
       lastModified: new Date().getTime(),
       type: 'audio',
     });
-    setFile((prev) => [...prev, sound]); // File 정보 출력
-    console.log(sound);
+
+    sessionStorage.setItem('file', sound.name);
     navigate('/');
   }, [audioUrl]);
   return (
