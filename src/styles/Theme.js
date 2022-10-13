@@ -1,2 +1,2 @@
-export const white = "#FFFFFF";
-export const tablet = "600px";
+export const white = '#FFFFFF';
+export const tablet = '600px';

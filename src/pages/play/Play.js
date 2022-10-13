@@ -1,48 +1,64 @@
-import React, { useRef } from "react";
-import { WaveSurfer, WaveForm } from "wavesurfer-react";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { WaveSurfer, WaveForm } from 'wavesurfer-react';
+import styled from 'styled-components';
+import { ImArrowLeft2 } from 'react-icons/im';
 
 const Play = () => {
   const wavesurferRef = useRef();
+  const navigate = useNavigate();
 
   const handleWave = (waveSurfer) => {
     wavesurferRef.current = waveSurfer;
 
     if (wavesurferRef.current) {
-      wavesurferRef.current.load(sessionStorage.getItem("url"));
+      wavesurferRef.current.load(sessionStorage.getItem('url'));
       // wavesurferRef.current.load(require("../../assets/birds.wav"));
     }
   };
 
   return (
     <WaveContainer>
-      <div className="title-container">
+      <div className='title-container'>
+        <StyleArrow onClick={() => navigate('/')} />
         <h1>재생화면</h1>
       </div>
       <WaveSurfer onMount={handleWave}>
         <WaveForm
-          id="waveform"
+          id='waveform'
           interact={false}
           responsive={true}
           barHeight={3}
           barWidth={3}
           cursorWidth={3}
-          waveColor={"white"}
-          cursorColor={"#FFFFFF"}
-          progressColor={"#c0c0c0"}
+          waveColor={'white'}
+          cursorColor={'#FFFFFF'}
+          progressColor={'#c0c0c0'}
         />
       </WaveSurfer>
       <audio
         onPlay={() => wavesurferRef.current.play()}
         onPause={() => wavesurferRef.current.pause()}
-        src={sessionStorage.getItem("url")}
+        src={sessionStorage.getItem('url')}
         // src={require("../../assets/birds.wav")}
         controls
-        controlsList="noplaybackrate"
+        controlsList='noplaybackrate'
       ></audio>
     </WaveContainer>
   );
 };
+
+const StyleArrow = styled(ImArrowLeft2)`
+  position: absolute;
+  top: 35px;
+  left: 20px;
+  color: white;
+  font-size: xx-large;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const WaveContainer = styled.div`
   width: ${({ theme }) => theme.tablet};
@@ -63,9 +79,12 @@ const WaveContainer = styled.div`
 
   .title-container {
     padding: 5% 0;
+    display: flex;
+    position: relative;
     border-bottom: 1px solid white;
 
     h1 {
+      margin: 0 auto;
       font-size: xx-large;
       color: white;
     }

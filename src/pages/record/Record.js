@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import waveSound from "../../assets/wave-sound.png";
-import { BsFillSquareFill } from "react-icons/bs";
-import { VscRecord } from "react-icons/vsc";
-import { FiMic } from "react-icons/fi";
+import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import waveSound from '../../assets/wave-sound.png';
+import { BsFillRecordFill } from 'react-icons/bs';
+import { IoIosSquare } from 'react-icons/io';
 
 const Record = ({ setFile }) => {
   const [stream, setStream] = useState();
@@ -13,7 +12,7 @@ const Record = ({ setFile }) => {
   const [source, setSource] = useState();
   const [analyser, setAnalyser] = useState();
   const [audioUrl, setAudioUrl] = useState();
-  const [timer, setTimer] = useState("00:00.00");
+  const [timer, setTimer] = useState('00:00.00');
 
   const navigate = useNavigate();
 
@@ -57,10 +56,11 @@ const Record = ({ setFile }) => {
             setAudioUrl(e.data);
             setOnRec(true);
           };
-          alert("녹음이 완료되었습니다.");
+          alert('녹음이 완료되었습니다.');
         } else {
           setOnRec(false);
         }
+        setTimer(e.playbackTime.toFixed(2));
         setTimer(e.playbackTime.toFixed(2));
       };
     });
@@ -89,35 +89,49 @@ const Record = ({ setFile }) => {
 
   const onSubmitAudioFile = useCallback(() => {
     if (audioUrl) {
-      sessionStorage.setItem("url", URL.createObjectURL(audioUrl)); // 출력된 링크에서 녹음된 오디오 확인 가능
+      sessionStorage.setItem('url', URL.createObjectURL(audioUrl)); // 출력된 링크에서 녹음된 오디오 확인 가능
     }
     // File 생성자를 사용해 파일로 변환
-    const sound = new File([audioUrl], "haii-audio", {
+    const sound = new File([audioUrl], 'haii-audio', {
       lastModified: new Date().getTime(),
-      type: "audio",
+      type: 'audio',
     });
 
-    sessionStorage.setItem("file", sound.name);
-    navigate("/");
+    sessionStorage.setItem('file', sound.name);
+    navigate('/');
   }, [audioUrl]);
   return (
     <StyledRecord>
-      <section className="wave-form">Haii-audio</section>
-      <section className="sound-wave">
-        <img alt="파형" src={waveSound} />
+      <section className='wave-form'>Haii-audio</section>
+      <section className='sound-wave'>
+        <img alt='파형' src={waveSound} />
       </section>
-      <section className="record-time">{timer}</section>
-      <footer className="record-btn-box">
-        <div className="record-btn" onClick={onRec ? onRecAudio : offRecAudio}>
-          {onRec ? <VscRecord /> : <BsFillSquareFill />}
+      <section className='record-time'>{timer}</section>
+      <footer className='record-btn-box'>
+        <div className='record-btn' onClick={onRec ? onRecAudio : offRecAudio}>
+          {onRec ? <StyledCircle /> : <StyledSquare />}
         </div>
-        <div className="complete-btn" onClick={onSubmitAudioFile}>
+        <div className='complete-btn' onClick={onSubmitAudioFile}>
           완료
         </div>
       </footer>
     </StyledRecord>
   );
 };
+
+const StyledSquare = styled(IoIosSquare)`
+  padding: 5px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: xx-large;
+`;
+
+const StyledCircle = styled(BsFillRecordFill)`
+  padding: 5px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: xx-large;
+`;
 
 const StyledRecord = styled.section`
   height: 80vh;
@@ -126,7 +140,12 @@ const StyledRecord = styled.section`
   align-items: center;
   justify-content: space-around;
   width: ${({ theme }) => theme.tablet};
-  margin: 0 auto;
+  height: 80vh;
+  margin: 7% auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   background: linear-gradient(
     to top,
     lightgrey 0%,
@@ -136,6 +155,8 @@ const StyledRecord = styled.section`
     #d9d9d9 75%,
     #bcbcbc 100%
   );
+  border-radius: 3%;
+  box-shadow: 5px 5px 5px 5px #d1d1d1;
 
   .wave-form {
     width: 100%;
@@ -182,7 +203,7 @@ const StyledRecord = styled.section`
     }
 
     .complete-btn {
-      padding: 10px 30px;
+      padding: 5px 30px;
       border: 1.5px solid #fff;
       border-radius: 30px;
       font-weight: 600;
@@ -190,8 +211,16 @@ const StyledRecord = styled.section`
 
       &:hover {
         cursor: pointer;
-        background-color: #fff;
-        color: ${({ theme }) => theme.bgColor};
+        background-color: silver;
+        color: linear-gradient(
+          to top,
+          lightgrey 0%,
+          lightgrey 1%,
+          #e0e0e0 26%,
+          #efefef 48%,
+          #d9d9d9 75%,
+          #bcbcbc 100%
+        );
       }
     }
   }

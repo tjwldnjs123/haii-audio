@@ -1,33 +1,33 @@
-import React from "react";
-import styled from "styled-components";
-import { VscRecord } from "react-icons/vsc";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { VscRecord } from 'react-icons/vsc';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const navigate = useNavigate();
 
-  const fileName = sessionStorage.getItem("file");
+  const fileName = sessionStorage.getItem('file');
 
   return (
     <NavContainer>
-      <div className="nav-bar-container">
-        <p className="nav-header">모든 녹음 항목</p>
-        <ul className="nav-list-container">
+      <div className='nav-bar-container'>
+        <p className='nav-header'>모든 녹음 항목</p>
+        <ul className='nav-list-container'>
           <li
-            className="nav-list"
+            className='nav-list'
             onClick={() => {
-              navigate("/play");
+              navigate('/play');
             }}
           >
-            <div className="title">{fileName}</div>
+            <div className='title'>{fileName}</div>
           </li>
         </ul>
-        <div className="nav-footer">
+        <div className='nav-footer'>
           <VscRecord
             onClick={() => {
-              navigate("/record");
+              navigate('/record');
             }}
-            className="record"
+            className='record'
           />
         </div>
       </div>
@@ -67,22 +67,18 @@ const NavContainer = styled.div`
       border-bottom: 1px solid #fff;
       color: #fff;
     }
-
     .nav-list-container {
       height: 82%;
       color: #fff;
-
       .nav-list {
         padding: 5%;
         border-bottom: 1px solid #fff;
         cursor: pointer;
-
         .title {
           font-weight: 700;
           text-align: center;
           font-size: 20px;
         }
-
         .time-container {
           display: flex;
           justify-content: space-between;
@@ -90,13 +86,11 @@ const NavContainer = styled.div`
         }
       }
     }
-
     .nav-footer {
       height: 10%;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-
       .record {
         width: 60px;
         height: 60px;
