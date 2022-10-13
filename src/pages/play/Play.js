@@ -1,6 +1,6 @@
-import React, { useCallback, useRef } from "react";
-import { WaveSurfer, WaveForm } from "wavesurfer-react";
-import styled from "styled-components";
+import React, { useCallback, useRef } from 'react';
+import { WaveSurfer, WaveForm } from 'wavesurfer-react';
+import styled from 'styled-components';
 
 const Play = () => {
   const wavesurferRef = useRef();
@@ -9,7 +9,7 @@ const Play = () => {
     wavesurferRef.current = waveSurfer;
 
     if (wavesurferRef.current) {
-      wavesurferRef.current.load(sessionStorage.getItem("url"));
+      wavesurferRef.current.load(sessionStorage.getItem('url'));
     }
   }, []);
 
@@ -25,11 +25,11 @@ const Play = () => {
     <WaveContainer>
       <WaveSurfer onMount={handleWave}>
         <WaveForm
-          id="waveform"
-          waveColor={"white"}
+          id='waveform'
+          waveColor={'white'}
           barHeight={2}
           barWidth={2}
-          progressColor={"blue"}
+          progressColor={'blue'}
           responsive={true}
           interact={false}
         />
@@ -37,9 +37,9 @@ const Play = () => {
       <audio
         onPlay={play}
         onPause={pause}
-        src={sessionStorage.getItem("url")}
+        src={sessionStorage.getItem('url')}
         controls
-        controlsList="noplaybackrate"
+        controlsList='noplaybackrate'
       ></audio>
       ;
     </WaveContainer>

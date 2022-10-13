@@ -1,8 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import waveSound from '../../assets/wave-sound.png';
 import { BsFillSquareFill } from 'react-icons/bs';
 import { VscRecord } from 'react-icons/vsc';
+import { FiMic } from 'react-icons/fi';
 
 const Record = ({ setFile }) => {
   const [stream, setStream] = useState();
@@ -11,6 +13,7 @@ const Record = ({ setFile }) => {
   const [source, setSource] = useState();
   const [analyser, setAnalyser] = useState();
   const [audioUrl, setAudioUrl] = useState();
+  const [timer, setTimer] = useState('00:00.00');
 
   const navigate = useNavigate();
 
@@ -54,9 +57,11 @@ const Record = ({ setFile }) => {
             setAudioUrl(e.data);
             setOnRec(true);
           };
+          alert('녹음이 완료되었습니다.');
         } else {
           setOnRec(false);
         }
+        setTimer(e.playbackTime.toFixed(2));
       };
     });
   };
@@ -92,20 +97,17 @@ const Record = ({ setFile }) => {
       type: 'audio',
     });
     setFile((prev) => [...prev, sound]); // File 정보 출력
+    console.log(sound);
     navigate('/');
   }, [audioUrl]);
   return (
     <StyledRecord>
-      <header>파일 제목</header>
-      <section className='wave-form'>파형</section>
-      <section className='record-time'>00:00.00</section>
+      <section className='wave-form'>Sound Recorder</section>
+      <img src={waveSound} />
+      <section className='record-time'>{timer}</section>
       <footer className='record-btn-box'>
         <div className='record-btn' onClick={onRec ? onRecAudio : offRecAudio}>
-          {onRec ? (
-            <VscRecord />
-          ) : (
-            <BsFillSquareFill style={{ color: '#fff' }} />
-          )}
+          {onRec ? <VscRecord /> : <BsFillSquareFill />}
         </div>
         <div className='complete-btn' onClick={onSubmitAudioFile}>
           완료
@@ -117,15 +119,30 @@ const Record = ({ setFile }) => {
 
 const StyledRecord = styled.section`
   width: ${({ theme }) => theme.tablet};
-  height: 100vh;
   margin: 0 auto;
-  background-color: ${({ theme }) => theme.bgColor};
+  background: linear-gradient(
+    to top,
+    lightgrey 0%,
+    lightgrey 1%,
+    #e0e0e0 26%,
+    #efefef 48%,
+    #d9d9d9 75%,
+    #bcbcbc 100%
+  );
 
   header {
     padding: 10px 0;
     display: flex;
     justify-content: center;
-    background-color: #647d72;
+    background: linear-gradient(
+      to top,
+      lightgrey 0%,
+      lightgrey 1%,
+      #e0e0e0 26%,
+      #efefef 48%,
+      #d9d9d9 75%,
+      #bcbcbc 100%
+    );
     border-bottom: 1.5px solid #2d3934;
     color: #fff;
     font-weight: 600;
@@ -133,14 +150,20 @@ const StyledRecord = styled.section`
 
   .wave-form {
     width: 100%;
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 60px;
-    border: 1px solid red;
-    color: white;
+    color: #fff;
+
+    .wave {
+      width: 600px;
+      height: 300px;
+      color: #000;
+    }
   }
 
   .side-wave-form {
-    height: 50px;
     margin-top: 80px;
     margin-left: 30px;
     margin-right: 30px;
@@ -148,19 +171,17 @@ const StyledRecord = styled.section`
   }
 
   .record-time {
-    margin-top: 60px;
     display: flex;
     justify-content: center;
-    color: white;
+    color: #fff;
     font-size: xx-large;
     font-weight: 600;
   }
 
   .record-btn-box {
-    margin-top: 90px;
     display: flex;
     justify-content: space-around;
-    color: white;
+    color: #000;
 
     .record-btn {
       font-size: xx-large;
@@ -176,6 +197,7 @@ const StyledRecord = styled.section`
       border: 1.5px solid #fff;
       border-radius: 30px;
       font-weight: 600;
+      color: #fff;
 
       &:hover {
         cursor: pointer;
