@@ -8,7 +8,7 @@ function Router() {
   const [file, setFile] = useState([]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/haii-audio">
       <Routes>
         <Route path="/" element={<Nav file={file} />} />
         <Route path="/record" element={<Record setFile={setFile} />} />
