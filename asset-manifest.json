@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/haii-audio/static/js/main.badec5a3.js",
+    "main.js": "/haii-audio/static/js/main.bb09ba78.js",
     "index.html": "/haii-audio/index.html",
-    "main.badec5a3.js.map": "/haii-audio/static/js/main.badec5a3.js.map"
+    "main.bb09ba78.js.map": "/haii-audio/static/js/main.bb09ba78.js.map"
   },
   "entrypoints": [
-    "static/js/main.badec5a3.js"
+    "static/js/main.bb09ba78.js"
   ]
 }
