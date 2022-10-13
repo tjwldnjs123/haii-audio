@@ -95,6 +95,7 @@ const Record = () => {
       </section>
       <section className='record-time'>{timer}</section>
       <select
+        aria-label='record-time-control'
         className='time-control'
         onChange={(e) => setSeconds(Number(e.target.value))}
       >
@@ -185,12 +186,28 @@ const StyledRecord = styled.section`
     color: #fff;
   }
 
+  .time-control {
+    width: 160px;
+    padding: 12px 13px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+
+    &:focus {
+      border: 1px solid silver;
+      border-radius: 10px;
+      outline: 2px solid silver;
+    }
+  }
+
   .record-btn-box {
-    width: 200px;
+    width: 300px;
     margin: 20px 0;
     display: flex;
-    justify-content: space-between;
-    color: #000;
+    align-items: center;
+    justify-content: space-around;
 
     .record-btn {
       font-size: xx-large;
@@ -202,8 +219,8 @@ const StyledRecord = styled.section`
     }
 
     .complete-btn {
-      padding: 5px 30px;
-      border: 1.5px solid #fff;
+      padding: 10px 30px;
+      border: 1px solid #fff;
       border-radius: 30px;
       font-weight: 600;
       color: #fff;
