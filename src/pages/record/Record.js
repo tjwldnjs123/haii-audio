@@ -102,8 +102,10 @@ const Record = ({ setFile }) => {
   }, [audioUrl]);
   return (
     <StyledRecord>
-      <section className='wave-form'>Sound Recorder</section>
-      <img src={waveSound} />
+      <section className='wave-form'>Haii-audio</section>
+      <section className='sound-wave'>
+        <img alt='파형' src={waveSound} />
+      </section>
       <section className='record-time'>{timer}</section>
       <footer className='record-btn-box'>
         <div className='record-btn' onClick={onRec ? onRecAudio : offRecAudio}>
@@ -118,6 +120,11 @@ const Record = ({ setFile }) => {
 };
 
 const StyledRecord = styled.section`
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   width: ${({ theme }) => theme.tablet};
   margin: 0 auto;
   background: linear-gradient(
@@ -130,31 +137,14 @@ const StyledRecord = styled.section`
     #bcbcbc 100%
   );
 
-  header {
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(
-      to top,
-      lightgrey 0%,
-      lightgrey 1%,
-      #e0e0e0 26%,
-      #efefef 48%,
-      #d9d9d9 75%,
-      #bcbcbc 100%
-    );
-    border-bottom: 1.5px solid #2d3934;
-    color: #fff;
-    font-weight: 600;
-  }
-
   .wave-form {
     width: 100%;
+    padding: 30px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 60px;
     color: #fff;
+    font-size: xx-large;
 
     .wave {
       width: 600px;
@@ -163,24 +153,23 @@ const StyledRecord = styled.section`
     }
   }
 
-  .side-wave-form {
-    margin-top: 80px;
-    margin-left: 30px;
-    margin-right: 30px;
-    border: 1px solid green;
+  .sound-wave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .record-time {
-    display: flex;
-    justify-content: center;
-    color: #fff;
+    margin: 20px 0;
     font-size: xx-large;
-    font-weight: 600;
+    color: #fff;
   }
 
   .record-btn-box {
+    width: 200px;
+    margin: 20px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #000;
 
     .record-btn {
