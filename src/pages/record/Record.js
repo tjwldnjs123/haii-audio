@@ -133,13 +133,13 @@ const StyledCircle = styled(BsFillRecordFill)`
 `;
 
 const StyledRecord = styled.section`
+  width: ${({ theme }) => theme.tablet};
   height: 80vh;
+  margin: 7% auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: ${({ theme }) => theme.tablet};
-  margin: 0 auto;
   background: linear-gradient(
     to top,
     lightgrey 0%,
@@ -149,6 +149,8 @@ const StyledRecord = styled.section`
     #d9d9d9 75%,
     #bcbcbc 100%
   );
+  border-radius: 3%;
+  box-shadow: 5px 5px 5px 5px #d1d1d1;
 
   .wave-form {
     width: 100%;

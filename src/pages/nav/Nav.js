@@ -1,38 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { VscRecord } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 
-const Nav = ({ file }) => {
+const Nav = () => {
   const navigate = useNavigate();
-  console.log(file);
+
+  const fileName = sessionStorage.getItem('file');
+
   return (
     <NavContainer>
       <div className='nav-bar-container'>
         <p className='nav-header'>모든 녹음 항목</p>
         <ul className='nav-list-container'>
-          {
-            <div className='main'>
-              <p>음성 메모를 시작하려면 녹음 버튼을 클릭하십시오.</p>
-            </div>
-          }
-          {file?.map((fileList) => {
-            return (
-              <li
-                key={fileList.size}
-                className='nav-list'
-                onClick={() => {
-                  navigate('/play');
-                }}
-              >
-                <div className='address'>{fileList.name}</div>
-                <div className='time-container'>
-                  <p>{fileList.lastModified}</p>
-                  <p>00:04</p>
-                </div>
-              </li>
-            );
-          })}
+          <li
+            className='nav-list'
+            onClick={() => {
+              navigate('/play');
+            }}
+          >
+            <div className='title'>{fileName}</div>
+          </li>
         </ul>
         <div className='nav-footer'>
           <VscRecord
@@ -43,9 +31,6 @@ const Nav = ({ file }) => {
           />
         </div>
       </div>
-      <div className='main'>
-        <p>음성 메모를 시작하려면 녹음 버튼을 클릭하십시오.</p>
-      </div>
     </NavContainer>
   );
 };
@@ -55,40 +40,43 @@ export default Nav;
 const NavContainer = styled.div`
   display: flex;
   width: ${({ theme }) => theme.tablet};
-  height: 100vh;
-  margin: 0 auto;
-  border: 1px solid black;
-
+  height: 80vh;
+  margin: 7% auto 0 auto;
+  background: linear-gradient(
+    to top,
+    lightgrey 0%,
+    lightgrey 1%,
+    #e0e0e0 26%,
+    #efefef 48%,
+    #d9d9d9 75%,
+    #bcbcbc 100%
+  );
+  border-radius: 3%;
+  box-shadow: 5px 5px 5px 5px #d1d1d1;
   .nav-bar-container {
-    width: 30%;
-    height: 100%;
-    border-right: 1px solid ${({ theme }) => theme.lightGreen};
-
+    width: 100%;
     .nav-header {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 8%;
       font-weight: 700;
-      border-bottom: 1px solid ${({ theme }) => theme.regularGreen};
+      font-size: 20px;
+      border-bottom: 1px solid #fff;
       color: #fff;
-      background-color: ${({ theme }) => theme.bgColor};
     }
-
     .nav-list-container {
       height: 82%;
-      background-color: ${({ theme }) => theme.bgColor};
       color: #fff;
-
       .nav-list {
         padding: 5%;
-        border-bottom: 1px solid ${({ theme }) => theme.regularGreen};
-
-        .address {
+        border-bottom: 1px solid #fff;
+        cursor: pointer;
+        .title {
           font-weight: 700;
-          margin-bottom: 15px;
+          text-align: center;
+          font-size: 20px;
         }
-
         .time-container {
           display: flex;
           justify-content: space-between;
@@ -96,33 +84,17 @@ const NavContainer = styled.div`
         }
       }
     }
-
     .nav-footer {
       height: 10%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      background-color: ${({ theme }) => theme.lightGreen};
-
+      align-items: flex-start;
       .record {
         width: 60px;
         height: 60px;
         color: #fff;
         cursor: pointer;
       }
-    }
-  }
-
-  .main {
-    width: 70%;
-    background-color: ${({ theme }) => theme.bgColor};
-
-    p {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      color: #b2b2b2;
     }
   }
 `;
