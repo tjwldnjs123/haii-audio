@@ -97,7 +97,7 @@ npm start
 
   <br />
 
-- ✅ 두번째 페이지 _(/record)_
+- ✅ record 페이지 _(/record)_
 
   - 김충만
     - 녹음
@@ -112,7 +112,7 @@ npm start
 
   <br />
 
-- ✅ 세번째 페이지 _(/play)_
+- ✅ play 페이지 _(/play)_
 
   - 이기완
     - 내용 
