@@ -23,15 +23,20 @@ const Play = () => {
 
   return (
     <WaveContainer>
+      <div className="title-container">
+        <h1>재생화면</h1>
+      </div>
       <WaveSurfer onMount={handleWave}>
         <WaveForm
           id="waveform"
           waveColor={"white"}
-          barHeight={2}
-          barWidth={2}
-          progressColor={"blue"}
+          barHeight={3}
+          barWidth={3}
+          progressColor={"#b6e3cf"}
           responsive={true}
           interact={false}
+          cursorColor={"#FFFFFF"}
+          cursorWidth={3}
         />
       </WaveSurfer>
       <audio
@@ -41,14 +46,35 @@ const Play = () => {
         controls
         controlsList="noplaybackrate"
       ></audio>
-      ;
     </WaveContainer>
   );
 };
 
 const WaveContainer = styled.div`
-  background-color: black;
+  width: ${({ theme }) => theme.tablet};
+  height: 100vh;
+  margin: 0 auto;
+  background-color: ${({ theme }) => theme.bgColor};
   text-align: center;
+
+  .title-container {
+    padding: 5% 0;
+    border-bottom: 1px solid white;
+
+    h1 {
+      font-size: xx-large;
+      color: white;
+    }
+  }
+
+  wave {
+    height: 384px !important;
+    border-bottom: 1px solid white;
+  }
+
+  audio {
+    margin-top: 10%;
+  }
 
   audio::-webkit-media-controls-timeline {
     display: none;
