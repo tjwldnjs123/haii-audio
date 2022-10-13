@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import waveSound from '../../assets/wave-sound.png';
-import { BsFillSquareFill } from 'react-icons/bs';
-import { VscRecord } from 'react-icons/vsc';
-import { FiMic } from 'react-icons/fi';
+import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import waveSound from "../../assets/wave-sound.png";
+import { BsFillSquareFill } from "react-icons/bs";
+import { VscRecord } from "react-icons/vsc";
+import { FiMic } from "react-icons/fi";
 
 const Record = ({ setFile }) => {
   const [stream, setStream] = useState();
@@ -13,7 +13,7 @@ const Record = ({ setFile }) => {
   const [source, setSource] = useState();
   const [analyser, setAnalyser] = useState();
   const [audioUrl, setAudioUrl] = useState();
-  const [timer, setTimer] = useState('00:00.00');
+  const [timer, setTimer] = useState("00:00.00");
 
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ const Record = ({ setFile }) => {
             setAudioUrl(e.data);
             setOnRec(true);
           };
-          alert('녹음이 완료되었습니다.');
+          alert("녹음이 완료되었습니다.");
         } else {
           setOnRec(false);
         }
@@ -89,29 +89,29 @@ const Record = ({ setFile }) => {
 
   const onSubmitAudioFile = useCallback(() => {
     if (audioUrl) {
-      sessionStorage.setItem('url', URL.createObjectURL(audioUrl)); // 출력된 링크에서 녹음된 오디오 확인 가능
+      sessionStorage.setItem("url", URL.createObjectURL(audioUrl)); // 출력된 링크에서 녹음된 오디오 확인 가능
     }
     // File 생성자를 사용해 파일로 변환
-    const sound = new File([audioUrl], 'haii-audio', {
+    const sound = new File([audioUrl], "haii-audio", {
       lastModified: new Date().getTime(),
-      type: 'audio',
+      type: "audio",
     });
-    setFile((prev) => [...prev, sound]); // File 정보 출력
-    console.log(sound);
-    navigate('/');
+
+    sessionStorage.setItem("file", sound.name);
+    navigate("/");
   }, [audioUrl]);
   return (
     <StyledRecord>
-      <section className='wave-form'>Haii-audio</section>
-      <section className='sound-wave'>
-        <img alt='파형' src={waveSound} />
+      <section className="wave-form">Haii-audio</section>
+      <section className="sound-wave">
+        <img alt="파형" src={waveSound} />
       </section>
-      <section className='record-time'>{timer}</section>
-      <footer className='record-btn-box'>
-        <div className='record-btn' onClick={onRec ? onRecAudio : offRecAudio}>
+      <section className="record-time">{timer}</section>
+      <footer className="record-btn-box">
+        <div className="record-btn" onClick={onRec ? onRecAudio : offRecAudio}>
           {onRec ? <VscRecord /> : <BsFillSquareFill />}
         </div>
-        <div className='complete-btn' onClick={onSubmitAudioFile}>
+        <div className="complete-btn" onClick={onSubmitAudioFile}>
           완료
         </div>
       </footer>
