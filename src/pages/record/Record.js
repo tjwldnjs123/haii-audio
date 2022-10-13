@@ -61,7 +61,6 @@ const Record = ({ setFile }) => {
 
   const offRecAudio = () => {
     media.ondataavailable = function (e) {
-      console.log(e.data);
       setAudioUrl(e.data);
       setOnRec(true);
     };
