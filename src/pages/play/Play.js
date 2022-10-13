@@ -1,25 +1,18 @@
-import React, { useCallback, useRef } from "react";
+import React, { useRef } from "react";
 import { WaveSurfer, WaveForm } from "wavesurfer-react";
 import styled from "styled-components";
 
 const Play = () => {
   const wavesurferRef = useRef();
 
-  const handleWave = useCallback((waveSurfer) => {
+  const handleWave = (waveSurfer) => {
     wavesurferRef.current = waveSurfer;
 
     if (wavesurferRef.current) {
       wavesurferRef.current.load(sessionStorage.getItem("url"));
+      // wavesurferRef.current.load(require("../../assets/birds.wav"));
     }
-  }, []);
-
-  const play = useCallback(() => {
-    wavesurferRef.current.play();
-  }, []);
-
-  const pause = useCallback(() => {
-    wavesurferRef.current.pause();
-  }, []);
+  };
 
   return (
     <WaveContainer>
@@ -29,20 +22,21 @@ const Play = () => {
       <WaveSurfer onMount={handleWave}>
         <WaveForm
           id="waveform"
-          waveColor={"white"}
+          interact={false}
+          responsive={true}
           barHeight={3}
           barWidth={3}
-          progressColor={"#b6e3cf"}
-          responsive={true}
-          interact={false}
-          cursorColor={"#FFFFFF"}
           cursorWidth={3}
+          waveColor={"white"}
+          cursorColor={"#FFFFFF"}
+          progressColor={"#b6e3cf"}
         />
       </WaveSurfer>
       <audio
-        onPlay={play}
-        onPause={pause}
+        onPlay={() => wavesurferRef.current.play()}
+        onPause={() => wavesurferRef.current.pause()}
         src={sessionStorage.getItem("url")}
+        // src={require("../../assets/birds.wav")}
         controls
         controlsList="noplaybackrate"
       ></audio>
