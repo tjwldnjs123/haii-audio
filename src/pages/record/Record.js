@@ -2,9 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import waveSound from '../../assets/wave-sound.png';
-import { BsFillSquareFill } from 'react-icons/bs';
-import { VscRecord } from 'react-icons/vsc';
-import { FiMic } from 'react-icons/fi';
+import { BsFillRecordFill } from 'react-icons/bs';
+import { IoIosSquare } from 'react-icons/io';
 
 const Record = ({ setFile }) => {
   const [stream, setStream] = useState();
@@ -109,7 +108,7 @@ const Record = ({ setFile }) => {
       <section className='record-time'>{timer}</section>
       <footer className='record-btn-box'>
         <div className='record-btn' onClick={onRec ? onRecAudio : offRecAudio}>
-          {onRec ? <VscRecord /> : <BsFillSquareFill />}
+          {onRec ? <StyledCircle /> : <StyledSquare />}
         </div>
         <div className='complete-btn' onClick={onSubmitAudioFile}>
           완료
@@ -118,6 +117,20 @@ const Record = ({ setFile }) => {
     </StyledRecord>
   );
 };
+
+const StyledSquare = styled(IoIosSquare)`
+  padding: 5px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: xx-large;
+`;
+
+const StyledCircle = styled(BsFillRecordFill)`
+  padding: 5px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: xx-large;
+`;
 
 const StyledRecord = styled.section`
   height: 80vh;
