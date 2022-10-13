@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import { WaveSurfer, WaveForm } from 'wavesurfer-react';
-import styled from 'styled-components';
+import React, { useRef } from "react";
+import { WaveSurfer, WaveForm } from "wavesurfer-react";
+import styled from "styled-components";
 
 const Play = () => {
   const wavesurferRef = useRef();
@@ -9,36 +9,36 @@ const Play = () => {
     wavesurferRef.current = waveSurfer;
 
     if (wavesurferRef.current) {
-      wavesurferRef.current.load(sessionStorage.getItem('url'));
+      wavesurferRef.current.load(sessionStorage.getItem("url"));
       // wavesurferRef.current.load(require("../../assets/birds.wav"));
     }
   };
 
   return (
     <WaveContainer>
-      <div className='title-container'>
+      <div className="title-container">
         <h1>재생화면</h1>
       </div>
       <WaveSurfer onMount={handleWave}>
         <WaveForm
-          id='waveform'
+          id="waveform"
           interact={false}
           responsive={true}
           barHeight={3}
           barWidth={3}
           cursorWidth={3}
-          waveColor={'white'}
-          cursorColor={'#FFFFFF'}
-          progressColor={'#b6e3cf'}
+          waveColor={"white"}
+          cursorColor={"#FFFFFF"}
+          progressColor={"#c0c0c0"}
         />
       </WaveSurfer>
       <audio
         onPlay={() => wavesurferRef.current.play()}
         onPause={() => wavesurferRef.current.pause()}
-        src={sessionStorage.getItem('url')}
+        src={sessionStorage.getItem("url")}
         // src={require("../../assets/birds.wav")}
         controls
-        controlsList='noplaybackrate'
+        controlsList="noplaybackrate"
       ></audio>
     </WaveContainer>
   );
@@ -46,9 +46,19 @@ const Play = () => {
 
 const WaveContainer = styled.div`
   width: ${({ theme }) => theme.tablet};
-  height: 100vh;
-  margin: 0 auto;
-  background-color: ${({ theme }) => theme.bgColor};
+  height: 80vh;
+  margin: 7% auto 0 auto;
+  background: linear-gradient(
+    to top,
+    lightgrey 0%,
+    lightgrey 1%,
+    #e0e0e0 26%,
+    #efefef 48%,
+    #d9d9d9 75%,
+    #bcbcbc 100%
+  );
+  border-radius: 3%;
+  box-shadow: 5px 5px 5px 5px #d1d1d1;
   text-align: center;
 
   .title-container {
@@ -63,7 +73,6 @@ const WaveContainer = styled.div`
 
   wave {
     height: 384px !important;
-    border-bottom: 1px solid white;
   }
 
   audio {
