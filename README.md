@@ -89,6 +89,7 @@ npm start
 ### 4-2. 구현 기능
 
 - ✅ nav 페이지 _(/ )_
+
 ![Nav](https://user-images.githubusercontent.com/103557910/195767050-f3dff46c-a074-476c-ae5a-5aeb55ffd49c.gif)
 
   - 서지원
@@ -99,6 +100,7 @@ npm start
   <br />
 
 - ✅ record 페이지 _(/record)_
+
 ![Record](https://user-images.githubusercontent.com/103557910/195766977-2c325d9f-0416-48e5-9815-6425bdc23b7b.gif)
 
   - 김충만
@@ -117,6 +119,7 @@ npm start
   <br />
 
 - ✅ play 페이지 _(/play)_
+
 ![Play](https://user-images.githubusercontent.com/103557910/195767017-84a01fc8-2c92-4c3b-a4ce-836c005d7e3d.gif)
 
   - 이기완
