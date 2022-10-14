@@ -115,6 +115,6 @@ npm start
 - ✅ play 페이지 _(/play)_
 
   - 이기완
-    - 재생화면 
-    - wavesurfer 라이브러리 이용하여 재생화면 구현
+    - wavesurfer 라이브러리 이용하여 파형 구현
+    - Audio 태그와 wavesurfer 결합하여 재생화면 구현
   
